@@ -1,8 +1,8 @@
+import 'package:budget_tracker/src/view/root_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'utils/bind.dart';
-import 'view/budget_view.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -15,7 +15,7 @@ class App extends StatelessWidget {
         primaryColor: Colors.white,
       ),
       initialBinding: Bind(),
-      home: const BudgetView(),
+      home: const RootScreen(),
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:budget_tracker/src/models/transaction_model.dart';
 import 'package:budget_tracker/src/repository/budget_repository.dart';
+import 'package:budget_tracker/src/utils/colors.dart';
+import 'package:budget_tracker/src/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,18 +19,14 @@ class BudgetController extends GetxController {
     transactions.addAll(result);
   }
 
-  Color getCategoryColor(String category) {
-    switch (category) {
-      case 'Entertainment':
-        return Colors.red[200]!;
-      case 'Food':
-        return Colors.green[200]!;
-      case 'Personal':
-        return Colors.blue[200]!;
-      case 'Transportation':
-        return Colors.purple[200]!;
-      default:
-        return Colors.orange[200]!;
+  Future<void> addTransaction() async {
+    //TODO addTransaction
+  }
+
+  Color getBorderColor(String transactionType) {
+    if (transactionType == income) {
+      return lightBlue;
     }
+    return lightOrange;
   }
 }

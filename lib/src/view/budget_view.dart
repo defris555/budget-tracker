@@ -10,8 +10,9 @@ class BudgetView extends GetView<BudgetController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return ColoredBox(
+      color: grey.withOpacity(0.05),
+      child: Column(
         children: [
           //TODO header widget
           Obx(
@@ -20,7 +21,7 @@ class BudgetView extends GetView<BudgetController> {
                 itemCount: controller.transactions.length,
                 itemBuilder: (context, index) {
                   final item = controller.transactions[index];
-                  final color = controller.getCategoryColor(item.category);
+                  final color = controller.getBorderColor(item.type);
                   return Container(
                     margin: const EdgeInsets.all(8.0),
                     decoration: BoxDecoration(
@@ -30,13 +31,6 @@ class BudgetView extends GetView<BudgetController> {
                         width: 3.0,
                         color: color,
                       ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: color,
-                          offset: const Offset(0, 2),
-                          blurRadius: 6.0,
-                        ),
-                      ],
                     ),
                     child: ListTile(
                       title: Text(
