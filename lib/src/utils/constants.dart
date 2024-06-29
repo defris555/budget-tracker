@@ -1,0 +1,1 @@
+const income = 'Income';

@@ -20,15 +20,15 @@ class BudgetController extends GetxController {
   Color getCategoryColor(String category) {
     switch (category) {
       case 'Entertainment':
-        return Colors.red[400]!;
+        return Colors.red[200]!;
       case 'Food':
-        return Colors.green[400]!;
+        return Colors.green[200]!;
       case 'Personal':
-        return Colors.blue[400]!;
+        return Colors.blue[200]!;
       case 'Transportation':
-        return Colors.purple[400]!;
+        return Colors.purple[200]!;
       default:
-        return Colors.orange[400]!;
+        return Colors.orange[200]!;
     }
   }
 }
