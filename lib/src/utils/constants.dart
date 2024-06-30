@@ -1,2 +1,2 @@
-const baseUrl = 'https://api.notion.com/v1';
-const income = 'Income';
+// const baseUrl = 'https://api.notion.com/v1';
+// const income = 'Income';

@@ -5,6 +5,7 @@ const Color expensesColor = Color.fromARGB(255, 255, 243, 243);
 const Color primary = Color.fromARGB(255, 188, 148, 253);
 const Color secondary = Color.fromARGB(255, 157, 97, 253);
 const Color black = Color(0xFF000000);
+const Color iconBlack = Color.fromARGB(150, 0, 0, 0);
 const Color white = Color(0xFFFFFFFF);
 const Color grey = Color.fromARGB(255, 171, 171, 171);
 const Color red = Color(0xFFec5766);

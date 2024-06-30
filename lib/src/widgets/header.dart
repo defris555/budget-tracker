@@ -2,6 +2,8 @@ import 'package:budget_tracker/src/controllers/budget_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../utils/colors.dart';
+
 class Header extends GetView<BudgetController> {
   const Header({super.key});
 
@@ -9,7 +11,7 @@ class Header extends GetView<BudgetController> {
   Widget build(BuildContext context) {
     return Container(
       // height: 200,
-      color: Colors.white,
+      color: white,
       child: Column(
         children: [
           controller.getCalendar(),

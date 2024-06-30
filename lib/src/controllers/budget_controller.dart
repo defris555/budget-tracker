@@ -1,6 +1,5 @@
 import 'package:budget_tracker/src/models/transaction_model.dart';
 import 'package:budget_tracker/src/utils/colors.dart';
-import 'package:budget_tracker/src/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:horizontal_calendar/horizontal_calendar.dart';
@@ -21,12 +20,8 @@ class BudgetController extends GetxController {
   //   transactions.addAll(result);
   // }
 
-  Future<void> addTransaction() async {
-    //TODO add transaction
-  }
-
   Color getBorderColor(String transactionType) {
-    if (transactionType == income) {
+    if (transactionType == 'income') {
       return lightBlue;
     }
     return lightOrange;

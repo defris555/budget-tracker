@@ -33,7 +33,7 @@ class RootController extends GetxController {
     return AnimatedBottomNavigationBar(
       activeColor: primary,
       splashColor: secondary,
-      inactiveColor: Colors.black.withOpacity(0.5),
+      inactiveColor: iconBlack,
       icons: iconItems,
       activeIndex: pageIndex.value,
       gapLocation: GapLocation.center,
@@ -44,7 +44,6 @@ class RootController extends GetxController {
       onTap: (index) {
         selectTab(index);
       },
-      //other params
     );
   }
 
