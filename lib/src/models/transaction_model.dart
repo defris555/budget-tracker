@@ -1,4 +1,5 @@
 class Transaction {
+  final String id;
   final String name;
   final String type;
   final String category;
@@ -6,6 +7,7 @@ class Transaction {
   final DateTime date;
 
   const Transaction({
+    required this.id,
     required this.name,
     required this.type,
     required this.category,
@@ -13,15 +15,16 @@ class Transaction {
     required this.date,
   });
 
-  factory Transaction.fromMap(Map<String, dynamic> map) {
-    final properties = map['properties'] as Map<String, dynamic>;
-    final dateStr = properties['Date']?['date']?['start'];
-    return Transaction(
-      name: properties['Name']?['title']?[0]?['plain_text'] ?? '?',
-      type: properties['Type']?['select']?['name'] ?? 'Any',
-      category: properties['Category']?['select']?['name'] ?? 'Any',
-      price: (properties['Price']?['number'] ?? 0).toDouble(),
-      date: dateStr != null ? DateTime.parse(dateStr) : DateTime.now(),
-    );
-  }
+  // factory Transaction.fromMap(Map<String, dynamic> map) {
+  //   final properties = map['properties'] as Map<String, dynamic>;
+  //   final dateStr = properties['Date']?['date']?['start'];
+  //   return Transaction(
+  //     id: map['id'] ?? '?',
+  //     name: properties['Name']?['title']?[0]?['plain_text'] ?? '?',
+  //     type: properties['Type']?['select']?['name'] ?? 'Any',
+  //     category: properties['Category']?['select']?['name'] ?? 'Any',
+  //     price: (properties['Price']?['number'] ?? 0).toDouble(),
+  //     date: dateStr != null ? DateTime.parse(dateStr) : DateTime.now(),
+  //   );
+  // }
 }

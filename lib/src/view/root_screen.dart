@@ -1,3 +1,4 @@
+import 'package:budget_tracker/src/controllers/budget_controller.dart';
 import 'package:budget_tracker/src/controllers/root_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ class RootScreen extends StatefulWidget {
 
 class _RootScreenState extends State<RootScreen> {
   final controller = Get.find<RootController>();
+  final budgetController = Get.find<BudgetController>();
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -19,7 +21,7 @@ class _RootScreenState extends State<RootScreen> {
           body: controller.getBody(),
           bottomNavigationBar: controller.getFooter(),
           floatingActionButton: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () async => await budgetController.addTransaction(),
             child: const Icon(Icons.add, size: 25.0),
           ),
           floatingActionButtonLocation:

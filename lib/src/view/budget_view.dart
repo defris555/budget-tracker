@@ -1,6 +1,7 @@
 import 'package:budget_tracker/src/controllers/budget_controller.dart';
 import 'package:budget_tracker/src/utils/colors.dart';
 import 'package:budget_tracker/src/utils/constants.dart';
+import 'package:budget_tracker/src/widgets/header.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -14,7 +15,7 @@ class BudgetView extends GetView<BudgetController> {
       color: grey.withOpacity(0.05),
       child: Column(
         children: [
-          //TODO header widget
+          const Header(),
           Obx(
             () => Expanded(
               child: ListView.builder(
