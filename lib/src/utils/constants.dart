@@ -1,2 +1,8 @@
-// const baseUrl = 'https://api.notion.com/v1';
-// const income = 'Income';
+const List<String> categories = [
+  'food',
+  'cloth',
+  'entertainment',
+  'transportation',
+  'personal',
+  'other',
+];

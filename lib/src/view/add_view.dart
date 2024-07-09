@@ -29,6 +29,13 @@ class AddView extends GetView<AddController> {
                       splashColor: secondary,
                       onPressed: () => Get.back(),
                     ),
+                    const Text(
+                      'Добавить транзакцию',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
                     const Spacer(),
                   ],
                 ),

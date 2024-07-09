@@ -13,10 +13,10 @@ class AddButton extends GetView<AddController> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          width: MediaQuery.sizeOf(context).width,
+          width: MediaQuery.sizeOf(context).width * .9,
           height: 50,
           decoration: BoxDecoration(
-              color: primary.withOpacity(.7),
+              color: primary.withOpacity(.8),
               borderRadius: BorderRadius.circular(15)),
           child: const Center(
             child: Text(

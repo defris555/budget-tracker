@@ -11,14 +11,17 @@ class BudgetController extends GetxController {
 
   @override
   void onInit() async {
-    // await fetchApi();
+    getTransactions();
     super.onInit();
   }
 
-  // Future<void> fetchApi() async {
-  //   final result = await BudgetRepository().getTransactions();
-  //   transactions.addAll(result);
-  // }
+  void getTransactions() {
+    //TODO getTransactions
+  }
+
+  void addTransaction(Transaction item) {
+    transactions.add(item);
+  }
 
   Color getBorderColor(String transactionType) {
     if (transactionType == 'income') {
