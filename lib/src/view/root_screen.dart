@@ -12,7 +12,6 @@ class RootScreen extends StatefulWidget {
 
 class _RootScreenState extends State<RootScreen> {
   final controller = Get.find<RootController>();
-  // final budgetController = Get.find<BudgetController>();
   @override
   Widget build(BuildContext context) {
     return Obx(

@@ -1,5 +1,6 @@
 import 'package:budget_tracker/src/controllers/add_controller.dart';
 import 'package:budget_tracker/src/utils/colors.dart';
+import 'package:budget_tracker/src/view/root_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +10,10 @@ class AddButton extends GetView<AddController> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => controller.addTransaction(),
+      onTap: () async {
+        await controller.addTransaction();
+        Get.to(() => const RootScreen());
+      },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(

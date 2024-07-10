@@ -1,3 +1,5 @@
+import 'package:get_storage/get_storage.dart';
+
 const List<String> categories = [
   'food',
   'cloth',
@@ -6,3 +8,5 @@ const List<String> categories = [
   'personal',
   'other',
 ];
+
+final box = GetStorage();

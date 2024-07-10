@@ -10,7 +10,6 @@ class Header extends GetView<BudgetController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 200,
       color: white,
       child: Column(
         children: [

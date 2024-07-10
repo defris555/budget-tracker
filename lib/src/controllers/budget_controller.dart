@@ -37,7 +37,6 @@ class BudgetController extends GetxController {
       date: DateTime.now(),
       locale: const Locale('ru', 'RU'),
       textColor: Colors.black45,
-      // backgroundColor: white,
       selectedColor: primary.withOpacity(.7),
       onDateSelected: (date) {
         if ((date as DateTime).isAfter(DateTime.now())) return;
