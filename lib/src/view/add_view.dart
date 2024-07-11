@@ -30,7 +30,10 @@ class AddView extends GetView<AddController> {
                         icon: Icon(MdiIcons.arrowLeft),
                         color: iconBlack,
                         splashColor: secondary,
-                        onPressed: () => Get.back(),
+                        onPressed: () {
+                          controller.clear();
+                          Get.back();
+                        },
                       ),
                       const Text(
                         'Добавить транзакцию',

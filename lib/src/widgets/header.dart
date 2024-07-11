@@ -23,7 +23,6 @@ class Header extends GetView<BudgetController> {
   Widget headerCalendar() {
     return HorizontalCalendar(
       initialDate: DateTime.now().subtract(const Duration(days: 90)),
-      lastDate: DateTime.now(),
       date: DateTime.now(),
       locale: const Locale('ru', 'RU'),
       textColor: Colors.black45,

@@ -3,12 +3,16 @@ import 'package:budget_tracker/src/models/transaction_model.dart';
 import 'package:budget_tracker/src/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:uuid/uuid.dart';
 
 enum TransactionType { income, expenses }
 
 class AddController extends GetxController {
+  final nameController = TextEditingController(text: 'Название');
+  final priceController = TextEditingController(text: 'Сумма');
+  final dateController = TextEditingController();
   var activeCategory = 0.obs;
   var category = ''.obs;
   var date = DateTime.now().obs;
@@ -20,6 +24,8 @@ class AddController extends GetxController {
   void onInit() {
     super.onInit();
     setCategory(0);
+    final date = DateFormat('dd.MM.yy').format(DateTime.now());
+    dateController.text = date;
   }
 
   void setType(int index) {
@@ -36,6 +42,7 @@ class AddController extends GetxController {
 
   void setPrice(double value) {
     price.value = value;
+    update();
   }
 
   void setName(String value) {
@@ -105,5 +112,8 @@ class AddController extends GetxController {
     name = ''.obs;
     price = 0.0.obs;
     type = TransactionType.expenses.obs;
+    nameController.text = 'Название';
+    priceController.text = 'Сумма';
+    dateController.text = DateFormat('dd.MM.yy').format(DateTime.now());
   }
 }

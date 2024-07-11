@@ -6,25 +6,8 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 import '../../utils/colors.dart';
 
-class InputFields extends StatefulWidget {
+class InputFields extends GetView<AddController> {
   const InputFields({super.key});
-
-  @override
-  State<InputFields> createState() => _InputFieldsState();
-}
-
-class _InputFieldsState extends State<InputFields> {
-  final _controller = Get.find<AddController>();
-  final _nameController = TextEditingController();
-  final _priceController = TextEditingController();
-  late TextEditingController _dateController;
-
-  @override
-  void initState() {
-    super.initState();
-    final date = DateFormat('dd.MM.yy').format(DateTime.now());
-    _dateController = TextEditingController(text: date);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,19 +22,19 @@ class _InputFieldsState extends State<InputFields> {
             borderRadius: BorderRadius.circular(15.0),
           ),
           child: TextField(
-            controller: _nameController,
+            controller: controller.nameController,
             decoration: InputDecoration(
               border: InputBorder.none,
-              hintText: 'Название',
-              hintStyle: TextStyle(
-                color: black.withOpacity(.5),
-              ),
               suffixIcon: Icon(
                 MdiIcons.cashCheck,
                 color: iconBlack,
               ),
             ),
-            onChanged: (value) => _controller.setName(value),
+            onChanged: (value) => controller.setName(value),
+            onTap: () {
+              controller.nameController.text = '';
+              controller.setName('');
+            },
           ),
         ),
         Row(
@@ -66,24 +49,24 @@ class _InputFieldsState extends State<InputFields> {
                 ),
                 child: TextField(
                   keyboardType: TextInputType.number,
-                  controller: _priceController,
+                  controller: controller.priceController,
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Сумма',
-                    hintStyle: TextStyle(
-                      color: black.withOpacity(.5),
-                    ),
                     suffixIcon: Icon(
                       MdiIcons.cashFast,
                       color: iconBlack,
                     ),
                   ),
+                  onTap: () {
+                    controller.priceController.text = '';
+                    controller.setPrice(0);
+                  },
                   onChanged: (value) {
                     if (value.isEmpty) {
-                      _controller.setPrice(0);
+                      controller.setPrice(0);
                     } else {
                       final price = double.tryParse(value);
-                      _controller.setPrice(price ?? 0);
+                      controller.setPrice(price ?? 0);
                     }
                   },
                 ),
@@ -100,7 +83,7 @@ class _InputFieldsState extends State<InputFields> {
                 ),
                 child: TextField(
                   keyboardType: TextInputType.none,
-                  controller: _dateController,
+                  controller: controller.dateController,
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     suffixIcon: Icon(
@@ -108,7 +91,7 @@ class _InputFieldsState extends State<InputFields> {
                       color: iconBlack,
                     ),
                   ),
-                  onTap: () => _selectDate(),
+                  onTap: () => _selectDate(context),
                 ),
               ),
             )
@@ -118,7 +101,7 @@ class _InputFieldsState extends State<InputFields> {
     );
   }
 
-  Future<void> _selectDate() async {
+  Future<void> _selectDate(BuildContext context) async {
     final pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -130,8 +113,9 @@ class _InputFieldsState extends State<InputFields> {
       ),
     );
     if (pickedDate != null) {
-      _dateController.text = DateFormat('dd.MM.yy').format(pickedDate);
-      _controller.setDate(pickedDate.toIso8601String());
+      controller.dateController.text =
+          DateFormat('dd.MM.yy').format(pickedDate);
+      controller.setDate(pickedDate.toIso8601String());
     }
   }
 }
