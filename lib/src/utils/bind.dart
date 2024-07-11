@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 class Bind extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<RootController>(() => RootController(), fenix: true);
+    Get.put<RootController>(RootController(), permanent: true);
+    Get.put<BudgetController>(BudgetController(), permanent: true);
     Get.lazyPut<AddController>(() => AddController(), fenix: true);
-    Get.lazyPut<BudgetController>(() => BudgetController(), fenix: true);
   }
 }

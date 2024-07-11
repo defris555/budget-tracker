@@ -14,3 +14,7 @@ const Color green = Color(0xFF43aa8b);
 const Color blue = Color(0xFF28c2ff);
 const Color lightBlue = Color.fromARGB(255, 185, 220, 249);
 const Color lightOrange = Color.fromARGB(255, 250, 202, 187);
+const Color lightGreen = Color.fromARGB(255, 177, 205, 192);
+const Color lightYellow = Color.fromARGB(255, 246, 241, 173);
+const Color lightViolet = Color.fromARGB(255, 248, 191, 255);
+const Color lightSea = Color.fromARGB(255, 191, 255, 248);

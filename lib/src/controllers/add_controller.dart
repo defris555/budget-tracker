@@ -4,7 +4,6 @@ import 'package:budget_tracker/src/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:uuid/uuid.dart';
 
 enum TransactionType { income, expenses }
@@ -19,6 +18,7 @@ class AddController extends GetxController {
   var name = ''.obs;
   var price = 0.0.obs;
   var type = TransactionType.expenses.obs;
+  var isExist = false.obs;
 
   @override
   void onInit() {
@@ -26,6 +26,21 @@ class AddController extends GetxController {
     setCategory(0);
     final date = DateFormat('dd.MM.yy').format(DateTime.now());
     dateController.text = date;
+  }
+
+  void setTransactionToEdit(Transaction transaction) {
+    //TODO check setTransactionToEdit
+    final dt = DateFormat('dd.MM.yy').format(transaction.date);
+    isExist.value = true;
+    setType(transaction.type == 'expenses' ? 0 : 1);
+    setCategory(categories.indexOf(transaction.category));
+    setName(transaction.name);
+    setPrice(transaction.price);
+    setDate(dt);
+    nameController.text = transaction.name;
+    priceController.text = transaction.price.toString();
+    dateController.text = dt;
+    update();
   }
 
   void setType(int index) {
@@ -54,40 +69,6 @@ class AddController extends GetxController {
     category = categories[activeCategory.value].obs;
   }
 
-  IconData getCategoryIcon(String value) {
-    switch (value) {
-      case 'food':
-        return MdiIcons.food;
-      case 'cloth':
-        return MdiIcons.hanger;
-      case 'entertainment':
-        return MdiIcons.theater;
-      case 'transportation':
-        return MdiIcons.trainCar;
-      case 'personal':
-        return MdiIcons.cardAccountDetails;
-      default:
-        return MdiIcons.starShooting;
-    }
-  }
-
-  String getCategoryName(String value) {
-    switch (value) {
-      case 'food':
-        return 'Еда';
-      case 'cloth':
-        return 'Одежда';
-      case 'entertainment':
-        return 'Развлечения';
-      case 'transportation':
-        return 'Транспорт';
-      case 'personal':
-        return 'Личное';
-      default:
-        return 'Другое';
-    }
-  }
-
   void addTransaction() {
     final String id = const Uuid().v4(); //Generate Random id
     final String typeValue =
@@ -112,6 +93,7 @@ class AddController extends GetxController {
     name = ''.obs;
     price = 0.0.obs;
     type = TransactionType.expenses.obs;
+    isExist = false.obs;
     nameController.text = 'Название';
     priceController.text = 'Сумма';
     dateController.text = DateFormat('dd.MM.yy').format(DateTime.now());

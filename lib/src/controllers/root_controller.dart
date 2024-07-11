@@ -1,6 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:budget_tracker/src/utils/colors.dart';
 import 'package:budget_tracker/src/view/budget_view.dart';
+import 'package:budget_tracker/src/view/chart_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -8,7 +9,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 class RootController extends GetxController {
   static const List<Widget> views = [
     BudgetView(),
-    BudgetView(),
+    ChartView(),
     BudgetView(),
     BudgetView(),
   ];

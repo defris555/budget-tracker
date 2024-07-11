@@ -1,6 +1,8 @@
 import 'package:budget_tracker/src/controllers/add_controller.dart';
+import 'package:budget_tracker/src/controllers/budget_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../utils/colors.dart';
 import '../../utils/constants.dart';
@@ -37,7 +39,7 @@ class CategoryChoice extends GetView<AddController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
-                        controller.getCategoryIcon(
+                        getCategoryIcon(
                           categories[index],
                         ),
                         color: controller.activeCategory.value == index
@@ -45,7 +47,7 @@ class CategoryChoice extends GetView<AddController> {
                             : iconBlack,
                       ),
                       Text(
-                        controller.getCategoryName(
+                        Get.find<BudgetController>().getCategoryName(
                           categories[index],
                         ),
                         style: TextStyle(
@@ -63,5 +65,22 @@ class CategoryChoice extends GetView<AddController> {
         ),
       ),
     );
+  }
+
+  IconData getCategoryIcon(String value) {
+    switch (value) {
+      case 'food':
+        return MdiIcons.food;
+      case 'cloth':
+        return MdiIcons.hanger;
+      case 'entertainment':
+        return MdiIcons.theater;
+      case 'transportation':
+        return MdiIcons.trainCar;
+      case 'personal':
+        return MdiIcons.cardAccountDetails;
+      default:
+        return MdiIcons.starShooting;
+    }
   }
 }
