@@ -17,7 +17,14 @@ class _InputFieldsState extends State<InputFields> {
   final _controller = Get.find<AddController>();
   final _nameController = TextEditingController();
   final _priceController = TextEditingController();
-  final _dateController = TextEditingController();
+  late TextEditingController _dateController;
+
+  @override
+  void initState() {
+    super.initState();
+    final date = DateFormat('dd.MM.yy').format(DateTime.now());
+    _dateController = TextEditingController(text: date);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,10 +103,6 @@ class _InputFieldsState extends State<InputFields> {
                   controller: _dateController,
                   decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: 'Дата',
-                    hintStyle: TextStyle(
-                      color: black.withOpacity(.5),
-                    ),
                     suffixIcon: Icon(
                       MdiIcons.cashClock,
                       color: iconBlack,

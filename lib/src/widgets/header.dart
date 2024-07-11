@@ -1,6 +1,7 @@
 import 'package:budget_tracker/src/controllers/budget_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:horizontal_calendar/horizontal_calendar.dart';
 
 import '../utils/colors.dart';
 
@@ -13,9 +14,25 @@ class Header extends GetView<BudgetController> {
       color: white,
       child: Column(
         children: [
-          controller.getCalendar(),
+          headerCalendar(),
         ],
       ),
+    );
+  }
+
+  Widget headerCalendar() {
+    return HorizontalCalendar(
+      initialDate: DateTime.now().subtract(const Duration(days: 90)),
+      lastDate: DateTime.now(),
+      date: DateTime.now(),
+      locale: const Locale('ru', 'RU'),
+      textColor: Colors.black45,
+      selectedColor: primary.withOpacity(.7),
+      onDateSelected: (date) {
+        controller.setDate(date);
+        controller.sortByDate();
+        controller.update();
+      },
     );
   }
 }

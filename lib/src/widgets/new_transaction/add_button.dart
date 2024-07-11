@@ -10,8 +10,9 @@ class AddButton extends GetView<AddController> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () async {
-        await controller.addTransaction();
+      onTap: () {
+        controller.addTransaction();
+        controller.clear();
         Get.to(() => const RootScreen());
       },
       child: Padding(

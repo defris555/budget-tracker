@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class BudgetView extends GetView<BudgetController> {
+class BudgetView extends StatelessWidget {
   const BudgetView({super.key});
 
   @override
@@ -15,13 +15,13 @@ class BudgetView extends GetView<BudgetController> {
       child: Column(
         children: [
           const Header(),
-          Obx(
-            () => Expanded(
+          GetBuilder<BudgetController>(builder: (controller) {
+            return Expanded(
               child: ListView.builder(
-                itemCount: controller.transactions.length,
+                itemCount: controller.transactionsByDate.length,
                 itemBuilder: (context, index) {
-                  final item = controller.transactions[index];
-                  final color = controller.getBorderColor(item.type);
+                  final item = controller.transactionsByDate[index];
+                  final color = item.type == 'income' ? lightBlue : lightOrange;
                   return Container(
                     margin: const EdgeInsets.all(8.0),
                     decoration: BoxDecoration(
@@ -52,15 +52,15 @@ class BudgetView extends GetView<BudgetController> {
                         ],
                       ),
                       trailing: Text(
-                        '- ${item.price} ₽',
+                        '${item.type == "income" ? "+" : "-"} ${item.price} ₽',
                         style: const TextStyle(fontSize: 18),
                       ),
                     ),
                   );
                 },
               ),
-            ),
-          ),
+            );
+          }),
         ],
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:budget_tracker/src/controllers/budget_controller.dart';
 import 'package:budget_tracker/src/models/transaction_model.dart';
 import 'package:budget_tracker/src/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -80,8 +81,7 @@ class AddController extends GetxController {
     }
   }
 
-  Future<void> addTransaction() async {
-    //TODO add transaction
+  void addTransaction() {
     final String id = const Uuid().v4(); //Generate Random id
     final String typeValue =
         type.value == TransactionType.income ? 'income' : 'expenses';
@@ -94,6 +94,16 @@ class AddController extends GetxController {
       'date': date.value.toIso8601String(),
     };
     final transaction = Transaction.fromMap(transactionMap);
-    print('Add transaction ${transaction.toMap()}');
+    final controller = Get.find<BudgetController>();
+    controller.addTransaction(transaction);
+  }
+
+  void clear() {
+    activeCategory = 0.obs;
+    category = ''.obs;
+    date = DateTime.now().obs;
+    name = ''.obs;
+    price = 0.0.obs;
+    type = TransactionType.expenses.obs;
   }
 }
